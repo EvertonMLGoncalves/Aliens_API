@@ -133,7 +133,7 @@ namespace APIALiens.Service
 
             if (alien.IsOnEarth == true)
             {
-                alien.DataSaidaTerra = DateTime.MinValue;
+                alien.DataSaidaTerra = DateTime.MinValue; 
                 return "Registrada a entrada do alien na Terra";
             }
             else
