@@ -1,4 +1,6 @@
-﻿using APIALiens.DTOs.ALienDTOs;
+﻿using APIALiens.DTOs;
+using APIALiens.DTOs.ALienDTOs;
+using APIALiens.EmailModule;
 using APIALiens.Models;
 using APIALiens.Service.Interfaces;
 using Microsoft.AspNetCore.Http;
@@ -11,12 +13,12 @@ namespace APIALiens.Controllers
     public class AlienController : ControllerBase
     {
         private readonly IAlienService _service;
-        public AlienController(IAlienService service)
+        private readonly ISmtp _smtp;
+        public AlienController(IAlienService service, ISmtp smtp)
         {
             _service = service;
+            _smtp = smtp;
         }
-
-
 
         [HttpGet]
         public async Task<ActionResult<List<Alien>>> GetAllAliens()
@@ -52,7 +54,15 @@ namespace APIALiens.Controllers
             var alienCriado = await _service.CreateAlien(alien);
             if (alienCriado == null)
                 return BadRequest("Erro! Alien não pode ser criado");
-            return Ok(alienCriado);
+            var emailDTO = new EmailDTO
+            {
+                To = "litkaeverton@gmail.com",
+                Subject = "Ola",
+                Body = "<h1>Ola Everton!</h1>"
+
+            }; 
+         var  result = await _smtp.SendEmail(emailDTO);
+            return Ok(result);
         }
 
         [HttpDelete("{id}")]
