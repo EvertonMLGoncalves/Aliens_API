@@ -2,6 +2,7 @@ using APIALiens.Data;
 using APIALiens.Service.Interfaces;
 using APIALiens.Service;
 using Microsoft.EntityFrameworkCore;
+using APIALiens.EmailModule;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddScoped<IAlienService, AlienService>();
 builder.Services.AddScoped<IPlanetaService, PlanetaService>();
 builder.Services.AddScoped<IPoderService, PoderService>();
+builder.Services.AddScoped<ISmtp, Smtp>();
 
 var app = builder.Build();
 

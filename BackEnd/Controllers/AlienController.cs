@@ -56,7 +56,7 @@ namespace APIALiens.Controllers
                 return BadRequest("Erro! Alien não pode ser criado");
             var emailDTO = new EmailDTO
             {
-                To = "litkaeverton@gmail.com",
+                To = "jovany.wilderman@ethereal.email",
                 Subject = "Ola",
                 Body = "<h1>Ola Everton!</h1>"
 
