@@ -1,4 +1,4 @@
-﻿using APIALiens.DTOs;
+using APIALiens.DTOs;
 using APIALiens.DTOs.ALienDTOs;
 using APIALiens.EmailModule;
 using APIALiens.Models;
@@ -58,7 +58,7 @@ namespace APIALiens.Controllers
             {
                 To = "jovany.wilderman@ethereal.email",
                 Subject = "Ola",
-                Body = "<h1>Ola Everton!</h1>"
+                Body = "<h1>Ola mundo!</h1>"
 
             }; 
          var  result = await _smtp.SendEmail(emailDTO);
