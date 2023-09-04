@@ -72,11 +72,18 @@ namespace APIALiens.Service
 
         public async Task<PlanetaDto> GetPlanetaByAlienId(int id)
         {
-            var planeta = await _context.Aliens.Include(a => a.PlanetaNatal).Select(a => a.PlanetaNatal).FirstOrDefaultAsync(a => a.Id == id);
+            var planeta = await _context.Aliens 
+                .Include(a =>a.PlanetaNatal) 
+                .Select(a => new PlanetaDto 
+                {  
+                    Id = a.PlanetaId,
+                    Nome = a.PlanetaNatal.Nome,
+                    Populacao = a.PlanetaNatal.Populacao
+                }) 
+                .FirstOrDefaultAsync(a => a.Id == id);
             if (planeta == null)
-                return null; 
-
-            return new PlanetaDto { Id = planeta.Id, Nome = planeta.Nome, Populacao=planeta.Populacao};
+                return null;
+            return planeta;
         }
 
 
