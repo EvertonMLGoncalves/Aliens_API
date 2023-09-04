@@ -1,4 +1,5 @@
 ﻿using APIALiens.DTOs.ALienDTOs;
+using APIALiens.DTOs.PlanetaDTOs;
 using APIALiens.Models;
 
 namespace APIALiens.Service.Interfaces
@@ -7,7 +8,7 @@ namespace APIALiens.Service.Interfaces
     {
         Task<IEnumerable<AlienDTO>> GetTodosAliens();
         Task<AlienDTO> GetAlienById(int id);
-        Task<Planeta> GetPlanetaByAlien(int id);
+        Task<PlanetaDto> GetPlanetaByAlienId(int id);
 
         Task<string> CreateAlien(CreateAlienDTO alien);
         Task<string> DeleteAlien(int id);

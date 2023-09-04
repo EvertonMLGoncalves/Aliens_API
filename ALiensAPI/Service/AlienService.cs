@@ -70,13 +70,13 @@ namespace APIALiens.Service
             return alien;
         }
 
-        public async Task<Planeta> GetPlanetaByAlien(int id)
+        public async Task<PlanetaDto> GetPlanetaByAlienId(int id)
         {
             var planeta = await _context.Aliens.Include(a => a.PlanetaNatal).Select(a => a.PlanetaNatal).FirstOrDefaultAsync(a => a.Id == id);
-
             if (planeta == null)
-                return null;
-            return planeta;
+                return null; 
+
+            return new PlanetaDto { Id = planeta.Id, Nome = planeta.Nome, Populacao=planeta.Populacao};
         }
 
 

@@ -1,5 +1,6 @@
 using APIALiens.DTOs;
 using APIALiens.DTOs.ALienDTOs;
+using APIALiens.DTOs.PlanetaDTOs;
 using APIALiens.EmailModule;
 using APIALiens.Models;
 using APIALiens.Service.Interfaces;
@@ -38,9 +39,9 @@ namespace APIALiens.Controllers
             return Ok(alien);
         }
         [HttpGet("{id}/planeta")]
-        public async Task<ActionResult<Planeta>> GetPlanetaByAlien(int id)
+        public async Task<ActionResult<PlanetaDto>> GetPlanetaByAlienId(int id)
         {
-            var planeta = await _service.GetPlanetaByAlien(id);
+            var planeta = await _service.GetPlanetaByAlienId(id);
             if (planeta == null)
                 return NotFound("Alien ou Planeta não encontrados");
             return Ok(planeta);
