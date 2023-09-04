@@ -2,7 +2,12 @@
 [![](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)]()
 [![](https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white)]()
 [![](https://img.shields.io/badge/Microsoft_SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)]() 
-
+ 
+# Colaboradores 
+- Everton M. L. Gonçalves 
+- Bernardo C.
+- Lucas C.Belletti
+- Matheus Eduardo
 ## Sobre o nosso projeto: 
 ### O objeto do nosso projeto é construir uma API para controle de entrada e saída de aliens da terra conforme solicitado pelo nosso instrutor. Nós utilizamos o ASP .NET para construir a API, e o Entity framework para acessar o banco de dados. Como funcionalidade extra, adicionamos um módulo de envio de e-mails, que envia um e-mail para o e-mail fornecido pelo usuário na hora do cadastro sempre que um Alien é cadastrado ou atualizado.
 ### Existem três entidades básicas, sendo elas: 
@@ -13,7 +18,7 @@
  
 ## Pré-requisitos: 
 ### Para utilizar nosso projeto, você deverá ter os seguintes programas instalados em seu computador: 
- 1. ### Visual Studeo (de preferência) ou Visual Studeo Code;  
+ 1. ### Visual Studio (de preferência) ou Visual Studio Code;  
 2.  ### SQL Server 
  
 ## Instalação - AliensAPI 
