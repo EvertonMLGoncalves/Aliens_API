@@ -42,12 +42,11 @@ namespace APIALiens.Controllers
             return Ok(populPlaneta);
         }
 
-        [HttpPost("{id}")]
-        public async Task<ActionResult<string>> CreatePlaneta(UpdatePlanetaDTO planeta, int id)
+        [HttpPost]
+        public async Task<ActionResult<string>> CreatePlaneta(UpdatePlanetaDTO planeta)
         {
             var planetaModel = new Planeta
             {
-                Id = id,
                 Nome = planeta.Nome,
                 Populacao = planeta.Populacao
             };

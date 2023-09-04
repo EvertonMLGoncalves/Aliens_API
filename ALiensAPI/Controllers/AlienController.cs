@@ -93,6 +93,23 @@ namespace APIALiens.Controllers
         public async Task<ActionResult<string>> UpdateAlien(AlienUpdateDTO request, int id)
         {
             var mensagem = await _service.UpdateAlien(request, id);
+            if (request.Email != null)
+            {
+                try
+                {
+                    var response = await _smtp.SendEmail(new EmailDTO
+                    {
+                        To = request.Email,
+                        Subject = "Alienígena atualizado com sucesso",
+                        Body = "<h1>Seu alienígena foi atualizado com sucesso!</h1>"
+
+                    });
+                }
+                catch (Exception ex)
+                {
+                    ;
+                }
+            }
             if (mensagem == null)
                 return NotFound("Alien não encontrado!");
             if (mensagem == "planetanotfound") return NotFound("Planeta não encontrado ou Id do planeta está ausente");
