@@ -21,6 +21,8 @@ builder.Services.AddScoped<IAlienService, AlienService>();
 builder.Services.AddScoped<IPlanetaService, PlanetaService>();
 builder.Services.AddScoped<IPoderService, PoderService>();
 builder.Services.AddScoped<ISmtp, Smtp>();
+//adicionando o método do cors 
+builder.Services.AddCors(); 
 
 var app = builder.Build();
 
@@ -32,7 +34,13 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+//liberando o acesso de qualquer porta 
+app.UseCors(c =>
+{
+    c.AllowAnyHeader();
+    c.AllowAnyMethod();
+    c.AllowAnyOrigin();
+});
 app.UseAuthorization();
 
 app.MapControllers();

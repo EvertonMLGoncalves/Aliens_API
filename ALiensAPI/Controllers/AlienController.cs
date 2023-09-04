@@ -47,22 +47,32 @@ namespace APIALiens.Controllers
         }
 
 
-
         [HttpPost]
         public async Task<ActionResult<string>> CreateAlien(CreateAlienDTO alien)
         {
+            if (alien.PlanetaId == 0 || alien.PlanetaId == null) return "O alien deve ter um planeta!";
             var alienCriado = await _service.CreateAlien(alien);
             if (alienCriado == null)
                 return BadRequest("Erro! Alien não pode ser criado");
-            var emailDTO = new EmailDTO
+            if (alien.Email != null)
             {
-                To = "jovany.wilderman@ethereal.email",
-                Subject = "Ola",
-                Body = "<h1>Ola mundo!</h1>"
+                try
+                {
+                    var response = await _smtp.SendEmail(new EmailDTO
+                    {
+                        To = alien.Email,
+                        Subject = "Alienígena cadastrado com sucesso",
+                        Body = "<h1>Seu alienígena foi cadastrado com sucesso!</h1>"
 
-            }; 
-         var  result = await _smtp.SendEmail(emailDTO);
-            return Ok(result);
+                    });
+                } 
+                catch (Exception ex)
+                {
+                    ;
+                }
+            }
+            return Ok(alienCriado);
+
         }
 
         [HttpDelete("{id}")]

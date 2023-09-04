@@ -1,6 +1,8 @@
 ﻿using APIALiens.Data;
+using APIALiens.DTOs;
 using APIALiens.DTOs.ALienDTOs;
 using APIALiens.DTOs.PlanetaDTOs;
+using APIALiens.EmailModule;
 using APIALiens.Models;
 using APIALiens.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -11,11 +13,11 @@ namespace APIALiens.Service
     {
         private readonly DataContext _context;
 
-
         public AlienService(DataContext context)
         {
             _context = context;
         }
+
         public async Task<IEnumerable<AlienDTO>> GetTodosAliens()
         {
             var alien = await _context.Aliens
@@ -29,7 +31,8 @@ namespace APIALiens.Service
                     Altura = a.Altura,
                     Idade = a.Idade,
                     IsOnEarth = a.IsOnEarth,
-                    DescAlien = a.DescAlien,
+                    DescAlien = a.DescAlien, 
+                    Email = a.Email,
                     Poderes = (List<PoderDoAlienDTO>)a.Poderes.Select(a => new PoderDoAlienDTO { Id = a.Id, Nome = a.Nome, }),
                     PlanetaNatal = new PlanetaDto
                     {
@@ -54,7 +57,8 @@ namespace APIALiens.Service
                     Altura = a.Altura,
                     Idade = a.Idade,
                     DescAlien = a.DescAlien,
-                    IsOnEarth = a.IsOnEarth,
+                    IsOnEarth = a.IsOnEarth, 
+                    Email = a.Email,
                     Poderes = a.Poderes.Select(a => new PoderDoAlienDTO { Id = a.Id, Nome = a.Nome, }).ToList(),
                     PlanetaNatal = new PlanetaDto
                     {
@@ -86,12 +90,13 @@ namespace APIALiens.Service
                 Idade = alien.Idade,
                 DescAlien = alien.DescAlien,
                 PlanetaId = alien.PlanetaId,
-                IsOnEarth = alien.IsOnEarth,
+                IsOnEarth = alien.IsOnEarth, 
+                Email = alien.Email,
                 DataEntradaTerra = alien.DataEntradaTerra,
                 DataSaidaTerra = alien.DataSaidaTerra,
             };
             _context.Aliens.Add(alienModel);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(); 
             return "Alien criado com sucesso";
 
         }
@@ -106,7 +111,8 @@ namespace APIALiens.Service
             alien.Altura = request.Altura;
             alien.Idade = request.Idade;
             alien.DescAlien = request.DescAlien;
-            alien.PlanetaId = request.PlanetaId;
+            alien.PlanetaId = request.PlanetaId; 
+            alien.Email = request.Email;
 
             await _context.SaveChangesAsync();
             return "Alien atualizado com sucesso";
