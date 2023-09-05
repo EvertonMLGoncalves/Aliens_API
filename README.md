@@ -1,13 +1,15 @@
 # Aliens API e Modulo de E-mails  
 [![](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)]()
 [![](https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white)]()
-[![](https://img.shields.io/badge/Microsoft_SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)]() 
+[![](https://img.shields.io/badge/Microsoft_SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)]()  
+[![](https://img.shields.io/badge/GitKraken-179287?style=for-the-badge&logo=GitKraken&logoColor=white)]()
  
-# Colaboradores 
-- Everton M. L. Gonçalves 
-- Bernardo C.
-- Lucas C.Belletti
-- Matheus Eduardo
+# Colaboradores  
+[![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)]()
+- Everton M. L. Gonçalves - [EvertonMLGoncalves](https://github.com/EvertonMLGoncalves)
+- Bernardo C. - [bchiamolera](https://github.com/bchiamolera)
+- Lucas C.Belletti - [lucascbelletti](https://github.com/lucascbelletti)
+- Matheus Eduardo - [Buggyes](https://github.com/Buggyes)
 ## Sobre o nosso projeto: 
 ### O objeto do nosso projeto é construir uma API para controle de entrada e saída de aliens da terra conforme solicitado pelo nosso instrutor. Nós utilizamos o ASP .NET para construir a API, e o Entity framework para acessar o banco de dados. Como funcionalidade extra, adicionamos um módulo de envio de e-mails, que envia um e-mail para o e-mail fornecido pelo usuário na hora do cadastro sempre que um Alien é cadastrado ou atualizado.
 ### Existem três entidades básicas, sendo elas: 
